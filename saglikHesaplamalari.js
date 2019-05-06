@@ -3,17 +3,26 @@ const bebekDogumTarihi = sonAdetTarihi => {
   const simdi = new Date();
   const sonAdet = new Date(sonAdetTarihi);
   const gebelikGunu = Math.floor((simdi - sonAdet) / gun);
-  const gebelikHaftasi = Math.floor((simdi - sonAdet) / gun / 7 + 1);
+  const gebelikHaftasi = Math.floor((simdi - sonAdet) / gun / 7);
 
-  const muhtemel = new Date(sonAdet + 280);
+  const muhtemel = sonAdet.setDate(sonAdet.getDate() + 280);
+  const year = new Date(muhtemel).getFullYear();
+  const month = new Date(muhtemel).getMonth() + 1;
+  const day = new Date(muhtemel).getDay() + 5;
+  const tarih = day + "/" + month + "/" + year;
 
-  return {
-    simdi,
-    sonAdet,
+  const tarihingunu = new Date(tarih);
+
+  const dogumgunu = tarihingunu.getDate();
+
+  const sonuc = () => ({
     gebelikGunu,
     gebelikHaftasi,
-    muhtemel
-  };
+    tarih
+  });
+
+  return `Gebeliğinizin ${sonuc().gebelikGunu}. günündesiniz. Bebek ${sonuc().gebelikHaftasi} haftalık. Bebeğinizin muhtemel doğum günü ${sonuc().tarih}. Sağlıklı bebekler olması dileğiyle...`;
 };
 
-console.log(bebekDogumTarihi("01/12/2019"));
+
+console.log(bebekDogumTarihi("04/01/2019")); 
