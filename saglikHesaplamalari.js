@@ -10,15 +10,11 @@ const bebekDogumTarihi = sonAdetTarihi => {
   const month = new Date(muhtemel).getMonth() + 1;
   const day = new Date(muhtemel).getDay() + 5;
   const tarih = day + "/" + month + "/" + year;
-
-  const tarihingunu = new Date(tarih);
-
-  const dogumgunu = tarihingunu.getDate();
-
   const sonuc = () => ({
     gebelikGunu,
     gebelikHaftasi,
-    tarih
+    tarih,
+
   });
 
   return `Gebeliğinizin ${sonuc().gebelikGunu}. günündesiniz. Bebek ${sonuc().gebelikHaftasi} haftalık. Bebeğinizin muhtemel doğum günü ${sonuc().tarih}. Sağlıklı bebekler olması dileğiyle...`;
